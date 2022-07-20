@@ -34,11 +34,11 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	size_t i;
 
 	if (!heap)
-		return (0);
+		return (sorted);
 	*size = __size(heap);
 	sorted = malloc(sizeof(int) * *size);
 	if (!sorted)
-		return (0);
+		return (sorted);
 	for (i = 0; i < *size; i++)
 	{
 		nb = heap_extract(&heap);
