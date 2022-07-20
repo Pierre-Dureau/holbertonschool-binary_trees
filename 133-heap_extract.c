@@ -1,27 +1,22 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_node - Create a node
+ * _size - measures the size of a binary tree
  *
- * @parent: Parent of the node
- * @value: value of the node
- * Return: The node
+ * @tree: Root of the tree
+ * Return: The size
  */
 
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+size_t _size(const binary_tree_t *tree)
 {
-	binary_tree_t *node;
+	size_t s = 0;
 
-	node = malloc(sizeof(binary_tree_t));
-	if (!node)
-		return (NULL);
+	if (!tree)
+		return (0);
 
-	node->parent = parent;
-	node->left = NULL;
-	node->right = NULL;
-	node->n = value;
+	s = _size(tree->left) + _size(tree->right);
 
-	return (node);
+	return (s + 1);
 }
 
 /**
@@ -69,7 +64,7 @@ int heap_extract(heap_t **root)
 	if (!*root)
 		return (0);
 	extract = (*root)->n;
-	size = binary_tree_size(*root);
+	size = _size(*root);
 	last = get_last(*root, 0, size - 1);
 	while (temp->left)
 	{
