@@ -69,7 +69,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 		if (balance > 1 && value > temp->left->n)
 		{
 			if (temp == *tree)
-				*tree = temp->left;
+				*tree = temp->left->right;
 			binary_tree_rotate_left(temp->left);
 			binary_tree_rotate_right(temp);
 		}
@@ -82,7 +82,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 		else if (balance < -1 && value < temp->right->n)
 		{
 			if (temp == *tree)
-				*tree = temp->right;
+				*tree = temp->right->left;
 			binary_tree_rotate_right(temp->right);
 			binary_tree_rotate_left(temp);
 		}
