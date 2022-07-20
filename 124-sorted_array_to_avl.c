@@ -13,6 +13,9 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	avl_t *node = NULL, *left = NULL, *right = NULL;
 	size_t i;
 
+	if (!array)
+		return (NULL);
+
 	i = (size - 1) / 2;
 	node = binary_tree_node(NULL, array[i]);
 	if (i > 0)
