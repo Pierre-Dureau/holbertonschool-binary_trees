@@ -30,7 +30,7 @@ size_t __size(const binary_tree_t *tree)
 
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
-	int *sorted, nb;
+	int *sorted = NULL, nb;
 	size_t i;
 
 	if (!heap)
