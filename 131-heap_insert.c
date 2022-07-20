@@ -23,6 +23,8 @@ size_t binary_tree_size(const binary_tree_t *tree)
  * find_parent - Find the parent for the first empty place
  *
  * @root: Root of the tree
+ * @i: Index of the parent wanted
+ * @size: Size of the tree
  * Return: The node with the place
  */
 
@@ -57,7 +59,7 @@ heap_t *find_parent(heap_t *root, size_t i, size_t size)
 heap_t *heap_insert(heap_t **root, int value)
 {
 	heap_t *node, *parent, *temp;
-	size_t size = binary_tree_size(*root);
+	size_t size;
 	int t;
 
 	node = binary_tree_node(NULL, value);
@@ -68,6 +70,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		*root = node;
 		return (node);
 	}
+	size = binary_tree_size(*root);
 	parent = find_parent(*root, 0, (size - 1) / 2);
 	if (!parent->left)
 		parent->left = node;
