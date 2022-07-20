@@ -89,5 +89,5 @@ heap_t *heap_insert(heap_t **root, int value)
 		temp = temp->parent;
 	}
 
-	return (node);
+	return (temp);
 }
