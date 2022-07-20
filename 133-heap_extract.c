@@ -61,9 +61,14 @@ int heap_extract(heap_t **root)
 	size_t size;
 	int extract;
 
-	if (!*root)
+	if (!*root || !root)
 		return (0);
 	extract = (*root)->n;
+	if (!(*root)->left && !(*root)->right)
+	{
+		free(*root);
+		return (extract);
+	}
 	size = _size(*root);
 	last = get_last(*root, 0, size - 1);
 	while (temp->left)
@@ -79,11 +84,11 @@ int heap_extract(heap_t **root)
 			temp = temp->right;
 		}
 	}
-	temp->n = last->n;
-	if (last->parent->left && last->parent->left->n == last->n)
+	if (last->parent->left->n == last->n)
 		last->parent->left = NULL;
 	else
 		last->parent->right = NULL;
+	temp->n = last->n;
 	free(last);
 	return (extract);
 }
