@@ -67,6 +67,7 @@ int heap_extract(heap_t **root)
 	if (!(*root)->left && !(*root)->right)
 	{
 		free(*root);
+		(*root) = NULL;
 		return (extract);
 	}
 	size = _size(*root);
@@ -90,5 +91,6 @@ int heap_extract(heap_t **root)
 		last->parent->right = NULL;
 	temp->n = last->n;
 	free(last);
+	last = NULL;
 	return (extract);
 }
