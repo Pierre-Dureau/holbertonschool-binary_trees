@@ -30,19 +30,16 @@ size_t __size(const binary_tree_t *tree)
 
 int *heap_to_sorted_array(heap_t *heap, size_t *size)
 {
-	int *sorted = NULL, nb;
+	int *sorted = NULL;
 	size_t i;
 
 	if (!heap)
-		return (sorted);
+		return (NULL);
 	*size = __size(heap);
 	sorted = malloc(sizeof(int) * *size);
 	if (!sorted)
-		return (sorted);
+		return (NULL);
 	for (i = 0; i < *size; i++)
-	{
-		nb = heap_extract(&heap);
-		sorted[i] = nb;
-	}
+		sorted[i] = heap_extract(&heap);
 	return (sorted);
 }
