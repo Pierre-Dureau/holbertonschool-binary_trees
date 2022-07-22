@@ -1,6 +1,21 @@
 #include "binary_trees.h"
 
 /**
+ * swap - Swap the value of a node with its parent
+ *
+ * @node: The node
+ */
+
+void swap(heap_t *node)
+{
+	int t;
+
+	t = node->n;
+	node->n = node->parent->n;
+	node->parent->n = t;
+}
+
+/**
  * _size - measures the size of a binary tree
  *
  * @tree: Root of the tree
@@ -90,6 +105,8 @@ int heap_extract(heap_t **root)
 	else
 		last->parent->right = NULL;
 	temp->n = last->n;
+	for (; temp && temp->parent && temp->n > temp->parent->n; temp = temp->parent)
+		swap(temp);
 	free(last);
 	last = NULL;
 	return (extract);
