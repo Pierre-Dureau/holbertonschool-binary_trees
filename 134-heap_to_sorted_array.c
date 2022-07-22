@@ -40,11 +40,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	if (!sorted)
 		return (NULL);
 	for (i = 0; i < *size; i++)
-	{
 		sorted[i] = heap_extract(&heap);
-		binary_tree_print(heap);
-		printf("\n\n\n");
-	}
 
 	return (sorted);
 }
